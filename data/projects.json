@@ -1,0 +1,54 @@
+[
+  {
+    "slug": "ounjefood-unit-economics",
+    "title": "Finding the drivers of vendor profit and loss",
+    "client": "OunjeFood, Lagos food delivery platform",
+    "theme": "Sales",
+    "type": "Flagship analysis",
+    "summary": "A customer and vendor data analysis designed to locate where profit and loss came from, then test operational adjustments.",
+    "businessQuestion": "How do customer, vendor and order patterns relate to profit and loss, and which practical adjustments merit testing?",
+    "source": "Confidential live-platform data. Confirm the approved source description and publication permissions before launch.",
+    "tools": ["SQL", "Python (pandas)", "Power BI"],
+    "result": "[ADD REAL RESULT]",
+    "status": "Replace all bracketed fields with verified findings before publication."
+  },
+  {
+    "slug": "customer-segmentation",
+    "title": "A practical view of repeat-purchase segments",
+    "client": "Public Online Retail dataset",
+    "theme": "Customer",
+    "type": "Customer segmentation",
+    "summary": "An RFM and k-means analysis using a public transactions dataset to explore recency, frequency and customer value.",
+    "businessQuestion": "How can customers be grouped by recency, frequency and monetary value to support distinct retention decisions?",
+    "source": "UCI Machine Learning Repository, Online Retail dataset. https://archive.ics.uci.edu/dataset/352/online+retail",
+    "tools": ["Python (pandas)", "SQL", "Power BI"],
+    "result": "[ADD VERIFIED FINDING]",
+    "status": "Public dataset; add validated output and notebook link before publication."
+  },
+  {
+    "slug": "campaign-performance",
+    "title": "Understanding responses to a direct marketing campaign",
+    "client": "UCI Bank Marketing dataset",
+    "theme": "Marketing",
+    "type": "Marketing analytics",
+    "summary": "A public-data analysis of customer response to direct marketing, with campaign reach and response measures. The dataset has no spend or revenue fields, so ROI is not calculated.",
+    "businessQuestion": "How do customer and contact characteristics relate to response in the public direct-marketing dataset?",
+    "source": "UCI Machine Learning Repository, Bank Marketing dataset. https://archive.ics.uci.edu/dataset/222/bank+marketing",
+    "tools": ["Python (pandas)", "Power BI", "Excel"],
+    "result": "[ADD VERIFIED FINDING]",
+    "status": "Public dataset; add validated output and notebook link before publication. ROI is outside the available data."
+  },
+  {
+    "slug": "nigeria-market-view",
+    "title": "A Nigeria market view, built from public indicators",
+    "client": "World Bank Open Data",
+    "theme": "Market Research",
+    "type": "Market research",
+    "summary": "A public-data graphic tracking Nigeria's GDP (current US$) across a selected period.",
+    "businessQuestion": "How has Nigeria's GDP (current US$) changed across the selected period, and what context should accompany that comparison?",
+    "source": "World Bank Open Data, Nigeria. https://api.worldbank.org/v2/country/NGA/indicator/NY.GDP.MKTP.CD?format=json",
+    "tools": ["Excel", "Power BI", "Data visualisation"],
+    "result": "[ADD VERIFIED FINDING]",
+    "status": "Choose an indicator, document its definition and period, then add verified output."
+  }
+]

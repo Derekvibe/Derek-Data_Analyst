@@ -1,0 +1,14 @@
+[
+  { "month": "Jan", "channel": "Search", "region": "Lagos", "category": "Food", "revenue": 1850000, "spend": 310000, "orders": 186 },
+  { "month": "Jan", "channel": "Social", "region": "Abuja", "category": "Home", "revenue": 1210000, "spend": 250000, "orders": 122 },
+  { "month": "Feb", "channel": "Search", "region": "Abuja", "category": "Food", "revenue": 2100000, "spend": 340000, "orders": 205 },
+  { "month": "Feb", "channel": "Referral", "region": "Lagos", "category": "Home", "revenue": 980000, "spend": 90000, "orders": 108 },
+  { "month": "Mar", "channel": "Social", "region": "Lagos", "category": "Food", "revenue": 1680000, "spend": 295000, "orders": 171 },
+  { "month": "Mar", "channel": "Search", "region": "Port Harcourt", "category": "Home", "revenue": 1460000, "spend": 260000, "orders": 139 },
+  { "month": "Apr", "channel": "Referral", "region": "Abuja", "category": "Food", "revenue": 1320000, "spend": 110000, "orders": 147 },
+  { "month": "Apr", "channel": "Social", "region": "Port Harcourt", "category": "Home", "revenue": 1140000, "spend": 210000, "orders": 114 },
+  { "month": "May", "channel": "Search", "region": "Lagos", "category": "Home", "revenue": 2380000, "spend": 355000, "orders": 226 },
+  { "month": "May", "channel": "Social", "region": "Abuja", "category": "Food", "revenue": 1570000, "spend": 275000, "orders": 162 },
+  { "month": "Jun", "channel": "Referral", "region": "Lagos", "category": "Food", "revenue": 1760000, "spend": 130000, "orders": 183 },
+  { "month": "Jun", "channel": "Search", "region": "Port Harcourt", "category": "Food", "revenue": 1940000, "spend": 320000, "orders": 192 }
+]
