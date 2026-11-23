@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { Icon } from "@/components/ui/icon";
 
 export function ContactForm() {
   const [status, setStatus] = useState("");
@@ -22,7 +23,7 @@ export function ContactForm() {
       setStatus(result.message ?? (response.ok ? "Message sent." : "The message could not be sent."));
       if (response.ok) form.reset();
     } catch {
-      setStatus("The message could not be sent. Please try again or use the email link.");
+      setStatus("The message could not be sent. Please try again later.");
     } finally {
       setBusy(false);
     }
@@ -43,7 +44,7 @@ export function ContactForm() {
         <input name="website" tabIndex={-1} autoComplete="off" />
       </label>
       <button disabled={busy} className="w-fit bg-[var(--wine)] px-6 py-3 text-sm font-semibold text-[var(--primary-foreground)] disabled:opacity-60" type="submit">
-        {busy ? "Sending…" : "Send message"}
+        <span className="inline-flex items-center gap-2">{busy ? "Sending…" : "Send message"}{!busy && <Icon name="arrow-right" className="h-4 w-4" />}</span>
       </button>
       <p id="form-status" role="status" aria-live="polite" className="m-0 min-h-6 text-sm text-[var(--muted)]">{status}</p>
       <p className="m-0 text-xs text-[var(--muted)]">The form sends through Resend when email credentials are configured. Never include confidential customer or company data.</p>

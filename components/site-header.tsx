@@ -3,16 +3,13 @@
 import Link from "next/link";
 import { useState } from "react";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { Icon } from "@/components/ui/icon";
 
 const links = [
-  ["Work", "/projects"],
-  ["Independent Research", "/research"],
+  ["Our Works", "/research"],
+  ["Case studies", "/projects"],
   ["About", "/about"],
   ["Skills", "/skills"],
-  ["How I Work", "/how-i-work"],
-  ["Dashboard Lab", "/dashboard-lab"],
-  ["Insights", "/insights"],
-  ["Resume", "/resume"],
   ["Contact", "/contact"],
 ];
 
@@ -36,12 +33,13 @@ export function SiteHeader() {
           <ThemeToggle />
           <button
             type="button"
-            className="border border-[var(--border)] bg-transparent px-3 py-2 text-sm"
+            className="border border-[var(--border)] bg-transparent p-2"
             aria-expanded={open}
             aria-controls="mobile-nav"
+            aria-label={open ? "Close navigation" : "Open navigation"}
             onClick={() => setOpen((value) => !value)}
           >
-            {open ? "Close" : "Menu"}
+            <Icon name={open ? "close" : "menu"} className="h-5 w-5" />
           </button>
         </div>
       </div>

@@ -7,7 +7,7 @@ export async function POST(request: NextRequest) {
   const recipient = process.env.CONTACT_EMAIL;
   const sender = process.env.RESEND_FROM_EMAIL;
   if (!apiKey || !recipient || !sender) {
-    return NextResponse.json({ message: "The contact form is not configured yet. Please use the email link instead." }, { status: 503 });
+    return NextResponse.json({ message: "The contact form is temporarily unavailable. Please try again later." }, { status: 503 });
   }
 
   let body: unknown;
@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
   });
   if (!response.ok) {
     console.error("Contact email delivery failed", response.status);
-    return NextResponse.json({ message: "The message could not be delivered. Please try again or use the email link." }, { status: 502 });
+    return NextResponse.json({ message: "The message could not be sent. Please try again later." }, { status: 502 });
   }
   return NextResponse.json({ message: "Thank you. Your message has been sent." });
 }

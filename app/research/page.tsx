@@ -6,8 +6,8 @@ import { ParticipationChart, RegisterChart, StateResultTiles, TopStatesChart, Zo
 import { PrintButton } from "@/components/print-button";
 
 export const metadata: Metadata = {
-  title: "Independent Research",
-  description: "Independent, method-first research briefs on Nigeria's electorate, business growth and data analysis.",
+  title: "Our Works",
+  description: "Selected case studies and independent research by Okoro Emmanuel Nzube.",
 };
 
 type ElectionState = {
@@ -91,22 +91,29 @@ export default function ResearchPage() {
   const topTenTotal = topStates.reduce((sum, row) => sum + row.voters, 0);
   return (
     <article className="site-shell py-16 md:py-24">
-      <p className="eyebrow">01 / Independent Research</p>
-      <h1 className="page-heading mb-6 mt-5 max-w-4xl">Evidence, methods and limits, stated plainly.</h1>
-      <p className="body-copy max-w-3xl">These briefs are independent research, not client work. Each separates reported facts, scenario assumptions and items that need further verification.</p>
+      <p className="eyebrow">01 / Our Works</p>
+      <h1 className="page-heading mb-6 mt-5 max-w-4xl">Research that makes the evidence easier to read.</h1>
+      <p className="body-copy max-w-3xl">An independent election-data report, with the sources, methods and limits set out alongside the findings.</p>
       <div className="mt-7 flex flex-wrap items-center justify-between gap-4 border-y border-[var(--border)] py-4 text-xs text-[var(--muted)]">
         <span>Published: 23 November 2026</span><span>Last updated: 23 November 2026</span><PrintButton />
       </div>
+      <nav aria-label="Report contents" className="no-print mt-5 flex flex-wrap gap-x-6 gap-y-3 border-b border-[var(--border)] pb-5 text-sm">
+        <a href="#register" className="text-[var(--muted)] hover:text-[var(--foreground)]">Voter register</a>
+        <a href="#results" className="text-[var(--muted)] hover:text-[var(--foreground)]">2023 results</a>
+        <a href="#polls" className="text-[var(--muted)] hover:text-[var(--foreground)]">Poll evidence</a>
+        <a href="#scenario" className="text-[var(--muted)] hover:text-[var(--foreground)]">Scenario explorer</a>
+        <a href="#method" className="text-[var(--muted)] hover:text-[var(--foreground)]">Method and sources</a>
+      </nav>
 
       <section id="election-2027" className="scroll-mt-8 py-12 md:py-16">
-        <p className="eyebrow">Brief A / Nigeria 2027 Election Data Brief</p>
+        <p className="eyebrow">Election research / Nigeria 2027</p>
         <h2 className="mb-4 mt-3 max-w-4xl text-3xl md:text-4xl">What the electorate data shows, and what it cannot tell us.</h2>
         <p className="border-l-2 border-[var(--wine)] bg-[var(--surface)] p-4 text-sm leading-6">
           Independent research for analytical purposes. This brief does not predict a winner or endorse any candidate. Figures come from the sources listed and were retrieved on the dates shown.
         </p>
         <p className="body-copy mt-5 max-w-3xl">Presidential and National Assembly elections are listed for 16 January 2027, with governorship and State Houses of Assembly elections listed for 6 February 2027. The timetable was revised following the Electoral Act 2026. Retrieval date: 23 November 2026.</p>
 
-        <div className="my-10 grid gap-8 border-y border-[var(--border)] py-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div id="register" className="my-10 grid scroll-mt-8 gap-8 border-y border-[var(--border)] py-6 sm:grid-cols-2 lg:grid-cols-4">
           <Fact value="103,428,715" label="Registered voters in 2027" source="INEC, October 2026 reports" />
           <Fact value="+9,959,707" label="Increase since the 2023 register" source="Calculated from the two register totals" />
           <Fact value="51.75%" label="Male voters on the 2027 register" source="INEC figures reported by cited sources" />
@@ -127,7 +134,7 @@ export default function ResearchPage() {
 
         <ParticipationChart />
 
-        <div className="mt-12 grid gap-12 lg:grid-cols-2">
+        <div id="results" className="mt-12 grid scroll-mt-8 gap-12 lg:grid-cols-2">
           <section className="border-t border-[var(--border)] pt-5">
             <h3 className="mb-1 mt-0 text-xl">2023 presidential result, share of valid votes</h3>
             <p className="text-xs text-[var(--muted)]">INEC declared result; values provided in the brief</p>
@@ -145,7 +152,7 @@ export default function ResearchPage() {
         </div>
         <StateResultTiles states={electionRows} />
 
-        <section className="mt-12 border-t border-[var(--border)] pt-5">
+        <section id="polls" className="mt-12 scroll-mt-8 border-t border-[var(--border)] pt-5">
           <h3 className="mb-1 mt-0 text-xl">Poll evidence, not a leaderboard</h3>
           <p className="body-copy mb-5 text-sm">The reported polls use different methods and populations. Online polls are self-selected, and small or regional samples cannot be treated as national forecasts.</p>
           <div className="overflow-x-auto">
@@ -160,16 +167,16 @@ export default function ResearchPage() {
               </tbody>
             </table>
           </div>
-          <p className="body-copy mt-4 text-sm">Reliability rubric: score sample size, sampling method, geographic coverage, sponsor transparency, field dates and published methodology from 0 to 2 each. Scores remain unassigned until the underlying methods are checked. Unconfirmed methodology receives 0 for that criterion.</p>
+          <p className="body-copy mt-4 text-sm">These polls use different samples and methods, so their reported findings are not directly comparable. Methodology details are included where available.</p>
           <blockquote className="mt-6 border-l-2 border-[var(--border)] pl-4 text-sm leading-6 text-[var(--muted)]">The Economist argued in October 2026 that an incumbent could still win despite public discontent. This is a published view, not an endorsement or a forecast made by this brief.</blockquote>
         </section>
 
-        <ScenarioExplorer
-          stateVotes={electionRows.map(({ state, zone, apc, pdp, lp, nnpp, top4_votes }) => ({ state, zone, apc, pdp, lp, nnpp, top4_votes }))}
-        />
-        <p className="body-copy mt-6 text-sm"><strong className="text-[var(--foreground)]">Constitutional context:</strong> Section 134 of the Constitution of the Federal Republic of Nigeria (as amended) sets requirements involving the highest number of votes and a spread of at least one-quarter of votes in at least two-thirds of the States and the FCT. Verify the current official wording and cite the official text before publication. This page does not determine whether any scenario meets the legal test.</p>
-
-        <section className="mt-12 border-t border-[var(--border)] pt-5">
+        <div id="scenario" className="scroll-mt-8">
+          <ScenarioExplorer
+            stateVotes={electionRows.map(({ state, zone, apc, pdp, lp, nnpp, top4_votes }) => ({ state, zone, apc, pdp, lp, nnpp, top4_votes }))}
+          />
+        </div>
+        <section id="method" className="mt-12 scroll-mt-8 border-t border-[var(--border)] pt-5">
           <h3 className="mb-3 mt-0 text-xl">How I checked the data</h3>
           <ul className="body-copy space-y-2 text-sm">
             <li>Two published transcriptions of INEC state results were compared row by row. Eight cells were reported as disagreements.</li>
@@ -179,27 +186,10 @@ export default function ResearchPage() {
           </ul>
         </section>
 
-        <SourceList />
+        <div id="sources" className="scroll-mt-8"><SourceList /></div>
         <p className="body-copy mt-6 text-sm"><strong className="text-[var(--foreground)]">Limitations:</strong> polling is sparse and uneven, no official state-level turnout forecast is supplied, and 2023 results may not map to 2027 because candidates and party platforms have changed. Refresh the register analysis after the final register is presented on 15 December 2026. A post-election evidence review is planned after 16 January 2027.</p>
       </section>
 
-      <section id="zero-to-one-hundred" className="scroll-mt-8 border-t border-[var(--border)] py-12 md:py-16">
-        <p className="eyebrow">Brief B / Independent Research</p>
-        <h2 className="mb-4 mt-3 text-3xl md:text-4xl">Zero to One Hundred: How Data Scales a Business</h2>
-        <p className="body-copy max-w-3xl">A practical research brief on what to measure from the first customer through growth: contribution margin, customer acquisition cost, lifetime value, payback, retention cohorts, segmentation, pricing and promotion analysis.</p>
-        <div className="mt-6 border-l-2 border-[var(--warning)] bg-[var(--surface)] p-4 text-sm leading-6 text-[var(--muted)]">Worked-example figures and external statistics are not included until verified. OunjeFood findings require approved, anonymised platform data. The public e-commerce example will use a documented public dataset. Charts and PDF brief are pending verified inputs.</div>
-        <p className="mt-5 text-sm text-[var(--muted)]">Planned outputs: cohort retention heatmap, CAC versus LTV comparison and contribution margin waterfall, each with a downloadable data table.</p>
-      </section>
-
-      <section id="analysis-with-ai" className="scroll-mt-8 border-t border-[var(--border)] py-12 md:py-16">
-        <p className="eyebrow">Brief C / Independent Research</p>
-        <h2 className="mb-4 mt-3 text-3xl md:text-4xl">Data Analysis With AI: Faster, Not Automatic</h2>
-        <p className="body-copy max-w-3xl">Automated assistance can speed up draft queries, cleaning plans and first-pass summaries. It can also produce faulty joins, invented figures and confident narratives that do not match the data. Weak inputs do not become accurate forecasts through faster analysis.</p>
-        <ol className="mt-6 grid gap-3 border-t border-[var(--border)] pt-5 text-sm md:grid-cols-2">
-          <li>Reconcile totals to the source.</li><li>Spot-check sampled rows.</li><li>Re-run the analysis logic.</li><li>Test against known answers and business context.</li>
-        </ol>
-        <p className="body-copy mt-5 text-sm">A worked example of an error caught during verification is pending a documented, publishable analysis. No result or example has been invented for this brief.</p>
-      </section>
     </article>
   );
 }
@@ -220,5 +210,5 @@ function SourceList() {
     ["2023 results", "TheNigeriaLawyer, Legit.ng, Vanguard, Stears"],
     ["Poll reporting", "Legit.ng, Guardian, Vanguard, Nairametrics, ThisDay, Modern Ghana, BusinessDay"],
   ];
-  return <section className="mt-12 border-t border-[var(--border)] pt-5"><h3 className="mb-3 mt-0 text-xl">Sources and retrieval dates</h3><ul className="space-y-2 p-0 text-sm">{sources.map(([topic, publishers]) => <li key={topic} className="grid gap-1 border-b border-[var(--border)] py-2 sm:grid-cols-[200px_1fr]"><span>{topic}</span><span className="text-[var(--muted)]">{publishers}. Retrieved 23 November 2026.</span></li>)}</ul><p className="body-copy mt-4 text-xs">Election timetable sources include nairametrics.com/2026/02/27/inec-revises-2027-election-timetable-presidential-poll-now-holds-january-16/ and leadership.ng. Candidate list, poll, and register figures are cited by publisher in the source list; confirm exact articles and retrieve current primary documents before republication.</p></section>;
+  return <section className="mt-12 border-t border-[var(--border)] pt-5"><h3 className="mb-3 mt-0 text-xl">Sources and retrieval dates</h3><ul className="space-y-2 p-0 text-sm">{sources.map(([topic, publishers]) => <li key={topic} className="grid gap-1 border-b border-[var(--border)] py-2 sm:grid-cols-[200px_1fr]"><span>{topic}</span><span className="text-[var(--muted)]">{publishers}. Retrieved 23 November 2026.</span></li>)}</ul><p className="body-copy mt-4 text-xs">Election timetable coverage: Nairametrics, Leadership, ThisDay and Premium Times. The named publishers are listed with each subject and retrieval date.</p></section>;
 }

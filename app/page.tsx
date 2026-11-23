@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { HeroScene } from "@/components/hero-scene";
-import { KpiCount } from "@/components/kpi-count";
 import { ProjectCard } from "@/components/project-card";
 import { SectionHeading } from "@/components/section-heading";
 import { ToolsStrip } from "@/components/tools-strip";
 import { CvLink } from "@/components/cv-link";
+import { Icon } from "@/components/ui/icon";
 import projects from "@/data/projects.json";
 
 export default function HomePage() {
@@ -14,16 +14,27 @@ export default function HomePage() {
       <section className="site-shell py-16 md:py-24">
         <SectionHeading
           number="01"
-          label="What I do"
-          title="Good analysis makes the next decision clearer."
-          intro="I work across customer, marketing and sales data to help teams understand what is happening, why it matters and what to do next."
+          label="Focus"
+          title="Start with the business question."
+          intro="Then find the evidence, explain what it means and make the next decision easier."
         />
-        <div className="mt-14 grid gap-8 sm:grid-cols-3">
-          <KpiCount value="[ADD REAL RESULT]" label="Business outcome from verified analysis" />
-          <KpiCount value="[ADD REAL RESULT]" label="Customer or vendor insight" />
-          <KpiCount value="[ADD REAL RESULT]" label="Analysis delivered to a team" />
+        <div className="mt-12 grid gap-8 border-t border-[var(--border)] pt-5 md:grid-cols-3">
+          <div className="max-w-sm">
+            <Icon name="people" className="mb-5 h-5 w-5 text-[var(--wine-text)]" />
+            <h3 className="mb-2 mt-0 text-xl">Understand customers</h3>
+            <p className="body-copy m-0 text-sm">Find useful patterns in customer behaviour, needs and repeat activity.</p>
+          </div>
+          <div className="max-w-sm">
+            <Icon name="chart" className="mb-5 h-5 w-5 text-[var(--wine-text)]" />
+            <h3 className="mb-2 mt-0 text-xl">Measure performance</h3>
+            <p className="body-copy m-0 text-sm">Make campaign, sales and service performance easier to assess.</p>
+          </div>
+          <div className="max-w-sm">
+            <Icon name="search" className="mb-5 h-5 w-5 text-[var(--wine-text)]" />
+            <h3 className="mb-2 mt-0 text-xl">Find the next step</h3>
+            <p className="body-copy m-0 text-sm">Turn analysis into a clear recommendation, with its limits stated.</p>
+          </div>
         </div>
-        <p className="mt-4 text-xs text-[var(--muted)]">Replace each field with a result that can be verified and shared.</p>
       </section>
 
       <div className="site-shell"><div className="section-rule" /></div>
@@ -31,15 +42,15 @@ export default function HomePage() {
       <section className="site-shell py-16 md:py-24">
         <SectionHeading
           number="02"
-          label="Selected work"
-          title="Questions worth answering."
-          intro="A selection of commercial and customer analysis. Findings are shown only when supported by a source and verified output."
+          label="Selected case studies"
+          title="Work grounded in real questions."
+          intro="Explore customer, marketing, sales and market research projects, with the data source and scope made clear."
         />
         <div className="mt-12 grid gap-x-10 gap-y-12 md:grid-cols-2">
           {projects.slice(0, 4).map((project, index) => <ProjectCard key={project.slug} project={project} index={index} />)}
         </div>
         <Link href="/projects" className="mt-10 inline-flex items-center gap-3 border-b border-[var(--primary)] pb-2 text-sm font-semibold">
-          Browse all projects <span aria-hidden="true">→</span>
+          Browse all case studies <Icon name="arrow-right" className="h-4 w-4" />
         </Link>
       </section>
 
@@ -48,9 +59,9 @@ export default function HomePage() {
       <section className="site-shell py-16 md:py-24">
         <SectionHeading
           number="03"
-          label="Approach"
-          title="Question first. Data next. Recommendation last."
-          intro="An engineering background brings a process-minded approach to messy business questions. Every conclusion is checked against the source and the context."
+          label="How I work"
+          title="Question first. Evidence next. Recommendation last."
+          intro="Chemical engineering training shaped a process-minded approach to analysis. Conclusions are checked against the source and the business context."
         />
         <div className="mt-12 grid gap-8 border-t border-[var(--border)] pt-5 md:grid-cols-[1fr_1fr_auto]">
           <p className="body-copy m-0 max-w-lg">From customer segmentation to campaign measurement, I focus on work that helps a team choose a practical next step.</p>
@@ -66,7 +77,7 @@ export default function HomePage() {
             <h2 className="mb-0 mt-4 max-w-3xl text-4xl leading-tight md:text-5xl">Have a business question in mind?</h2>
           </div>
           <div className="flex flex-wrap gap-5">
-            <Link href="/projects" className="border-b border-[var(--primary)] pb-2 text-sm font-semibold">View projects</Link>
+            <Link href="/projects" className="border-b border-[var(--primary)] pb-2 text-sm font-semibold">View case studies</Link>
             <CvLink className="border-b border-[var(--border)] pb-2 text-sm font-semibold" />
             <Link href="/contact" className="border-b border-[var(--border)] pb-2 text-sm font-semibold">Contact</Link>
           </div>

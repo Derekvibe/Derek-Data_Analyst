@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import projects from "@/data/projects.json";
-import { OunjeFoodStory } from "@/components/ounjefood-story";
 import { PrintButton } from "@/components/print-button";
 
 type Project = (typeof projects)[number];
@@ -27,17 +26,18 @@ export default async function ProjectPage({ params }: Props) {
 }
 
 function ProjectDetails({ project }: { project: Project }) {
-  const flagship = project.slug === "ounjefood-unit-economics";
+  const analysisScope = project.slug === "ounjefood-unit-economics"
+    ? "The workflow follows three stages: SQL extraction, data checks and analysis in Python, then reporting in Power BI."
+    : project.slug === "customer-segmentation"
+      ? "Compare recency, frequency and monetary value, then assess whether clustering adds useful distinctions for customer decisions."
+      : project.slug === "campaign-performance"
+        ? "Explore customer response patterns using the fields available in the public dataset. Spend and revenue are not included."
+        : "Review the GDP indicator by year, with its published definition and reporting period kept visible.";
   const sections = [
     ["01", "Business question", project.businessQuestion],
     ["02", "Data source", project.source],
-    ["03", "Cleaning and validation", "Document field definitions, check missing and duplicated records, reconcile row counts and financial totals to the source, then record exclusions."],
-    ["04", "Method", flagship ? "Three-stage workflow: SQL extraction, Python with pandas for cleaning and analysis, and a Power BI dashboard for review." : "Document the analysis method, comparison period and assumptions alongside the verified notebook."],
-    ["05", "Key findings", project.result],
-    ["06", "Recommendation and action taken", "[ADD VERIFIED RECOMMENDATION AND ACTION TAKEN]"],
-    ["07", "Result", project.result],
-    ["08", "Tools used", project.tools.join(", ")],
-    ["09", "Notebook or repository", "Add a reviewed public notebook or repository link. Do not expose confidential records."],
+    ["03", "Analysis scope", analysisScope],
+    ["04", "Tools", project.tools.join(", ")],
   ];
 
   return (
@@ -50,9 +50,7 @@ function ProjectDetails({ project }: { project: Project }) {
         <p className="eyebrow">{project.type} / {project.theme}</p>
         <h1 className="page-heading mb-7 mt-4">{project.title}</h1>
         <p className="body-copy max-w-2xl">{project.summary}</p>
-        <p className="mt-6 border-l-2 border-[var(--primary)] pl-4 text-sm text-[var(--muted)]">{project.status}</p>
       </div>
-      {flagship && <OunjeFoodStory />}
       <div className="mt-14">
         {sections.map(([number, title, content]) => (
           <section key={number} className="grid gap-4 border-t border-[var(--border)] py-6 md:grid-cols-[100px_0.7fr_1.3fr]">
@@ -62,12 +60,6 @@ function ProjectDetails({ project }: { project: Project }) {
           </section>
         ))}
       </div>
-      {project.slug !== "ounjefood-unit-economics" && (
-        <p className="mt-10 border border-[var(--border)] bg-[var(--surface)] p-5 text-sm text-[var(--muted)]">
-          Illustrative chart area. Add a chart only after its data, labels and source have been checked.
-        </p>
-      )}
-      <p className="mt-8 text-xs text-[var(--muted)]">Source: {project.source}</p>
     </article>
   );
 }

@@ -8,7 +8,6 @@ type Project = {
   theme: string;
   type: string;
   summary: string;
-  result: string;
 };
 const themes = ["All", "Customer", "Marketing", "Sales", "Market Research"];
 
